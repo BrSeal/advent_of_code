@@ -1,29 +1,39 @@
 package common;
 
 public abstract class Challenge<InputType, OutputType> {
-    private final InputType input;
-    private final OutputType first;
-    private final OutputType second;
+    private InputType input;
+    private OutputType first;
+    private OutputType second;
 
     abstract protected InputType parseInput(String fileName);
 
-    abstract protected OutputType computeFirst();
+    abstract protected void computeAnswers();
 
-    abstract protected OutputType computeSecond();
+    public void compute(String fileName){
+        setInput(parseInput(fileName));
+        computeAnswers();
+    }
 
-    // constructor, getters and setters
-    public Challenge(String inputFilePath) {
-        input = parseInput(inputFilePath);
-        first = computeFirst();
-        second = computeSecond();
+    // getters and setters
+
+    public void setInput(InputType input) {
+        this.input = input;
     }
 
     public InputType getInput() {
         return input;
     }
 
+    public void setFirst(OutputType first) {
+        this.first = first;
+    }
+
     public OutputType getFirst() {
         return first;
+    }
+
+    public void setSecond(OutputType second) {
+        this.second = second;
     }
 
     public OutputType getSecond() {

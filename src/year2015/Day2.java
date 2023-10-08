@@ -10,10 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Day2 extends Challenge<List<Day2.Box>, Integer> {
-    public Day2(String input) {
-        super(input);
-    }
-
     @Override
     protected List<Box> parseInput(String fileName) {
         try (
@@ -27,18 +23,15 @@ public class Day2 extends Challenge<List<Day2.Box>, Integer> {
         }
     }
 
-    @Override
-    protected Integer computeFirst() {
-        return getInput().stream()
-                .map(box -> box.getArea() + box.getVolume() / box.getMaxDimension())
-                .reduce(0, Integer::sum);
-    }
-
-    @Override
-    protected Integer computeSecond() {
-        return getInput().stream()
-                .map(box -> box.getVolume() + 2 * (box.height + box.width + box.length - box.getMaxDimension()))
-                .reduce(0, Integer::sum);
+    public void computeAnswers() {
+        int first = 0;
+        int second = 0;
+        for (Box box : getInput()) {
+            first += box.getArea() + box.getVolume() / box.getMaxDimension();
+            second += box.getVolume() + 2 * (box.height + box.width + box.length - box.getMaxDimension());
+        }
+        setFirst(first);
+        setSecond(second);
     }
 
     public static class Box {

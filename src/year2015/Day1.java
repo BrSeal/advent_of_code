@@ -2,42 +2,26 @@ package year2015;
 
 
 import common.Challenge;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import common.InputParser;
 
 public class Day1 extends Challenge<String, Integer> {
-
-    public Day1(String input) {
-        super(input);
-    }
-
     @Override
     protected String parseInput(String filePath) {
-        try {
-            return Files.readString(Paths.get(filePath));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return "";
-        }
+        return InputParser.parseToString(filePath);
     }
 
     @Override
-    protected Integer computeFirst() {
-        return getInput().chars()
-                .map(ch -> ch == '(' ? 1 : -1)
-                .reduce(0, Integer::sum);
-    }
+    public void computeAnswers() {
+        int first = 0;
+        Integer second = null;
 
-    @Override
-    protected Integer computeSecond() {
-        String input = getInput();
-        int i = 0;
-        int val = 0;
-        while (val != -1 && i<input.length()) {
-            val += (input.charAt(i) == '(' ? 1 : -1);
-            i++;
+        for(int i = 0; i< getInput().length(); i++){
+            first += getInput().charAt(i) == '(' ? 1 : -1;
+            if(second == null && first == -1){
+                second = i+1;
+            }
         }
-        return i;
+        setFirst(first);
+        setSecond(second);
     }
 }
