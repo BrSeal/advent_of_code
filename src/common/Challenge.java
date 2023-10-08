@@ -9,8 +9,8 @@ public abstract class Challenge<InputType, OutputType> {
 
     abstract protected void computeAnswers();
 
-    public void compute(String fileName){
-        setInput(parseInput(fileName));
+    public void compute(String filePath){
+        setInput(parseInput(filePath));
         computeAnswers();
     }
 

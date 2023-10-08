@@ -11,9 +11,9 @@ import java.util.stream.Stream;
 
 public class Day2 extends Challenge<List<Day2.Box>, Integer> {
     @Override
-    protected List<Box> parseInput(String fileName) {
+    protected List<Box> parseInput(String filePath) {
         try (
-                Stream<String> lines = Files.lines(Paths.get(fileName))
+                Stream<String> lines = Files.lines(Paths.get(filePath))
         ) {
             return lines.map(el -> el.split("x"))
                     .map(Day2.Box::new)
