@@ -1,7 +1,4 @@
-import year2015.Day1;
-import year2015.Day2;
-import year2015.Day3;
-import year2015.Day4;
+import year2015.*;
 
 import java.util.List;
 

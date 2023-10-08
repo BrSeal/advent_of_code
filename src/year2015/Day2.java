@@ -1,26 +1,14 @@
 package year2015;
 
 import common.Challenge;
+import common.InputParser;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Day2 extends Challenge<List<Day2.Box>, Integer> {
     @Override
     protected List<Box> parseInput(String filePath) {
-        try (
-                Stream<String> lines = Files.lines(Paths.get(filePath))
-        ) {
-            return lines.map(el -> el.split("x"))
-                    .map(Day2.Box::new)
-                    .collect(Collectors.toList());
-        } catch (Exception ex) {
-            return Collections.emptyList();
-        }
+        return InputParser.parseToList(filePath, (line) -> new Day2.Box(line.split("x")));
     }
 
     public void computeAnswers() {
