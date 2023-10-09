@@ -2,6 +2,7 @@ package year2015;
 
 import common.Challenge;
 import common.InputParser;
+import year2015.objects.Coordinates;
 
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +29,7 @@ public class Day3 extends Challenge<String, Integer> {
 
         boolean santaTurn = true;
         for (char directionChar : getInput().toCharArray()) {
-            positionSantaOnly = positionSantaOnly.move(directionChar);
+            positionSantaOnly = move(positionSantaOnly, directionChar);
             visited.add(positionSantaOnly);
 
             Coordinates position = santaTurn? moveAndGetSantaCoordinates(directionChar) : moveAndGetRobotCoordinates(directionChar);
@@ -41,52 +42,23 @@ public class Day3 extends Challenge<String, Integer> {
         setSecond(visitedRobotAndSanta.size());
     }
 
+    private Coordinates move(Coordinates coordinates, char command) {
+        return switch (command) {
+            case '<' -> new Coordinates(coordinates.getX() - 1, coordinates.getY());
+            case '>' -> new Coordinates(coordinates.getX() + 1, coordinates.getY());
+            case '^' -> new Coordinates(coordinates.getX(), coordinates.getY() - 1);
+            case 'v' -> new Coordinates(coordinates.getX(), coordinates.getY() + 1);
+            default -> throw new IllegalStateException("Unexpected value: " + command);
+        };
+    }
+
     private Coordinates moveAndGetSantaCoordinates(char directionChar){
-        positionSanta = positionSanta.move(directionChar);
+        positionSanta = move(positionSanta, directionChar);
         return positionSanta;
     }
 
     private Coordinates moveAndGetRobotCoordinates(char directionChar){
-        positionRobot = positionRobot.move(directionChar);
+        positionRobot = move(positionRobot, directionChar);
         return positionRobot;
-    }
-
-
-    static class Coordinates {
-        private final int x;
-
-        private final int y;
-
-        public Coordinates(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public Coordinates move(char command) {
-            return switch (command) {
-                case '<' -> new Coordinates(x - 1, y);
-                case '>' -> new Coordinates(x + 1, y);
-                case '^' -> new Coordinates(x, y - 1);
-                case 'v' -> new Coordinates(x, y + 1);
-                default -> throw new IllegalStateException("Unexpected value: " + command);
-            };
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            return this == o || ((o instanceof Coordinates that) && x == that.x && y == that.y);
-        }
-
-        @Override
-        public int hashCode() {
-            int result = x;
-            result = 31 * result + y;
-            return result;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("(%d, %d)", x, y);
-        }
     }
 }
