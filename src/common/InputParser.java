@@ -19,7 +19,7 @@ public class InputParser {
     }
 
     public static List<String> parseToList(String filePath){
-        return parseToList(filePath, (val) -> val);
+        return parseToList(filePath, String::toString);
     }
 
     public static <T> List<T> parseToList(String filePath, Function<String, T> converterFn){
