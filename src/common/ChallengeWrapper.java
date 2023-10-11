@@ -1,4 +1,4 @@
-import common.Challenge;
+package common;
 
 public class ChallengeWrapper {
     private final int dayNumber;
