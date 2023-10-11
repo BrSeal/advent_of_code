@@ -44,10 +44,10 @@ public class Day3 extends Challenge<String, Integer> {
 
     private Coordinates move(Coordinates coordinates, char command) {
         return switch (command) {
-            case '<' -> new Coordinates(coordinates.getX() - 1, coordinates.getY());
-            case '>' -> new Coordinates(coordinates.getX() + 1, coordinates.getY());
-            case '^' -> new Coordinates(coordinates.getX(), coordinates.getY() - 1);
-            case 'v' -> new Coordinates(coordinates.getX(), coordinates.getY() + 1);
+            case '<' -> new Coordinates(coordinates.x() - 1, coordinates.y());
+            case '>' -> new Coordinates(coordinates.x() + 1, coordinates.y());
+            case '^' -> new Coordinates(coordinates.x(), coordinates.y() - 1);
+            case 'v' -> new Coordinates(coordinates.x(), coordinates.y() + 1);
             default -> throw new IllegalStateException("Unexpected value: " + command);
         };
     }

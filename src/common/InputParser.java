@@ -22,11 +22,11 @@ public class InputParser {
         return parseToList(filePath, String::toString);
     }
 
-    public static <T> List<T> parseToList(String filePath, Function<String, T> converterFn){
+    public static <T> List<T> parseToList(String filePath, Function<String, T> lineToObjectFn){
         try (
                 Stream<String> lines = Files.lines(Paths.get(filePath))
         ) {
-            return lines.map(converterFn)
+            return lines.map(lineToObjectFn)
                     .collect(Collectors.toList());
         } catch (Exception ex) {
             return Collections.emptyList();
