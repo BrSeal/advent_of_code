@@ -1,9 +1,15 @@
 package common;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class ChallengeWrapper {
     private final int dayNumber;
     private final Challenge<?, ?> challenge;
+    private final String inputFilePath;
     private final boolean skip;
+    private final boolean printExecutionTime;
+
 
     public ChallengeWrapper(int dayNumber, Challenge<?, ?> challenge, String inputFilePath) {
         this(dayNumber, challenge, inputFilePath, false, false);
@@ -13,19 +19,13 @@ public class ChallengeWrapper {
         this(dayNumber, challenge, inputFilePath, skip, false);
     }
 
-    public ChallengeWrapper(int dayNumber, Challenge<?, ?> challenge, String inputFilePath, boolean skip, boolean printExecutionTime) {
-        this.dayNumber = dayNumber;
-        this.challenge = challenge;
-        this.skip = skip;
-
-        if (skip) {
-            return;
-        }
-
-        long start = System.currentTimeMillis();
-        challenge.compute(inputFilePath);
-        if (printExecutionTime) {
-            System.out.println("Day " + dayNumber + " calc took " + (System.currentTimeMillis() - start) + " ms");
+    public void computeChallengeAnswers() {
+        if (!skip) {
+            long start = System.currentTimeMillis();
+            challenge.compute(inputFilePath);
+            if (printExecutionTime) {
+                System.out.println("Day " + dayNumber + " calc took " + (System.currentTimeMillis() - start) + " ms");
+            }
         }
     }
 
