@@ -16,8 +16,8 @@ public class Day2 extends Challenge<List<Box>, Integer> {
         int first = 0;
         int second = 0;
         for (Box box : getInput()) {
-            first += box.getArea() + box.getVolume() / box.getMaxDimension();
-            second += box.getVolume() + 2 * (box.getHeight() + box.getWidth() + box.getLength() - box.getMaxDimension());
+            first += box.area() + box.volume() / box.maxDimension();
+            second += box.volume() + 2 * (box.height() + box.width() + box.length() - box.maxDimension());
         }
         setFirst(first);
         setSecond(second);

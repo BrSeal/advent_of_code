@@ -35,18 +35,18 @@ public class Day6 extends Challenge<List<LedCommand>, Integer> {
     }
 
     private void applyCommand(LedCommand command, boolean brightness) {
-        for (int i = command.getUpperLeftCorner().x(); i <= command.getLowerRightCorner().x(); i++) {
-            for (int j = command.getUpperLeftCorner().y(); j <= command.getLowerRightCorner().y(); j++) {
+        for (int i = command.upperLeftCorner().x(); i <= command.lowerRightCorner().x(); i++) {
+            for (int j = command.upperLeftCorner().y(); j <= command.lowerRightCorner().y(); j++) {
                 int value = ledDisplay[i][j];
 
                 if (brightness) {
-                    value = switch (command.getCommand()) {
+                    value = switch (command.command()) {
                         case TOGGLE -> value + 2;
                         case TURN_ON -> value + 1;
                         case TURN_OFF -> Math.max(value - 1, 0);
                     };
                 } else {
-                    value = switch (command.getCommand()) {
+                    value = switch (command.command()) {
                         case TOGGLE -> (value + 1) % 2;
                         case TURN_ON -> 1;
                         case TURN_OFF -> 0;

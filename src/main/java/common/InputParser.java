@@ -26,8 +26,7 @@ public class InputParser {
         try (
                 Stream<String> lines = Files.lines(Paths.get(filePath))
         ) {
-            return lines.map(lineToObjectFn)
-                    .collect(Collectors.toList());
+            return lines.map(lineToObjectFn).collect(Collectors.toList());
         } catch (Exception ex) {
             return Collections.emptyList();
         }

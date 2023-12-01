@@ -6,6 +6,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+target
 .idea
-advent_of_code_2015.iml
+*.iml
 out
