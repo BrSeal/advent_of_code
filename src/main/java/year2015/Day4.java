@@ -24,7 +24,6 @@ public class Day4 extends Challenge<String, Integer> {
             setSecond(getSuffix(md, getInput(), MIN_STARTING_ZEROES_2, getFirst()));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            ex.printStackTrace();
         }
     }
 

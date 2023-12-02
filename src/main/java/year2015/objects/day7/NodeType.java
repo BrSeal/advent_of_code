@@ -6,14 +6,5 @@ public enum NodeType {
     AND,
     OR,
     RSHIFT,
-    LSHIFT;
-
-    public static NodeType fromString(String str){
-        for(NodeType value : values()){
-            if(str.contains(value.name())){
-                return value;
-            }
-        }
-        throw new IllegalArgumentException("Not found NodeType for string: " + str);
-    }
+    LSHIFT
 }

@@ -13,7 +13,9 @@ public class InputParser {
         try {
             return Files.readString(Paths.get(filePath));
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println("===============!! EXCEPTION !!===============");
+            System.out.println(ex.getMessage());
+            System.out.println("=============================================");
             return "";
         }
     }
