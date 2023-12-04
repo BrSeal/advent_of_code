@@ -13,9 +13,7 @@ public class InputParser {
         try {
             return Files.readString(Paths.get(filePath));
         } catch (Exception ex) {
-            System.out.println("===============!! EXCEPTION !!===============");
-            System.out.println(ex.getMessage());
-            System.out.println("=============================================");
+            printException(ex);
             return "";
         }
     }
@@ -30,7 +28,15 @@ public class InputParser {
         ) {
             return lines.map(lineToObjectFn).collect(Collectors.toList());
         } catch (Exception ex) {
+            printException(ex);
             return Collections.emptyList();
         }
+    }
+
+    private static void printException(Exception ex){
+        System.out.println("===============!! EXCEPTION !!===============");
+        System.out.println(ex.getClass());
+        System.out.println(ex.getMessage());
+        System.out.println("=============================================");
     }
 }
