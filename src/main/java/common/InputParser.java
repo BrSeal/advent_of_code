@@ -1,5 +1,7 @@
 package common;
 
+import lombok.experimental.UtilityClass;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -8,6 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@UtilityClass
 public class InputParser {
     public static String parseToString(String filePath){
         try {
@@ -26,7 +29,7 @@ public class InputParser {
         try (
                 Stream<String> lines = Files.lines(Paths.get(filePath))
         ) {
-            return lines.map(lineToObjectFn).collect(Collectors.toList());
+            return lines.map(lineToObjectFn).toList();
         } catch (Exception ex) {
             printException(ex);
             return Collections.emptyList();
