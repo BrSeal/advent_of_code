@@ -7,7 +7,8 @@ import java.util.List;
 public class Main2023 {
     private final static List<ChallengeWrapper> challenges =  List.of(
             new ChallengeWrapper(2023, 1, new Day1()),
-            new ChallengeWrapper(2023, 2, new Day2())
+            new ChallengeWrapper(2023, 2, new Day2()),
+            new ChallengeWrapper(2023, 3, new Day3())
     );
 
     public static void main(String[] args) {

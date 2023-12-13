@@ -12,7 +12,7 @@ public abstract class Challenge<InputType, OutputType> {
 
     abstract protected InputType parseInput(String fileName);
 
-    abstract protected void computeAnswers();
+    protected void computeAnswers() {}
 
     public void compute(String filePath){
         setInput(parseInput(filePath));
