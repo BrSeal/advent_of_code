@@ -2,10 +2,6 @@ package year2024.day6;
 
 import common.InputParser;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.atomic.AtomicLong;
-
 import static year2024.day6.Direction.*;
 
 public class Main {
