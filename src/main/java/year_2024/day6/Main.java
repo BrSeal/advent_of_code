@@ -1,8 +1,10 @@
-package year2024.day6;
+package year_2024.day6;
 
 import common.InputParser;
 
-import static year2024.day6.Direction.*;
+import java.util.Arrays;
+
+import static year_2024.day6.Direction.*;
 
 public class Main {
     private static final String RESOURCE_PATH = "src/main/resources/2024/6.txt";
@@ -20,6 +22,7 @@ public class Main {
                         case '>': ints[i] = RIGHT.getMarker(); break;
                         case 'v': ints[i] = DOWN.getMarker(); break;
                         case '<': ints[i] = LEFT.getMarker(); break;
+                        default: break;
                     }
                 }
                 return ints;
@@ -65,9 +68,7 @@ public class Main {
     private static int[][] copy(int[][] arr) {
         int[][] copy = new int[arr.length][arr[0].length];
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                copy[i][j] = arr[i][j];
-            }
+                copy[i] = Arrays.copyOf(arr[i], arr[i].length);
         }
         return copy;
     }

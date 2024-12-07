@@ -1,4 +1,4 @@
-package year2024.day7;
+package year_2024.day7;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

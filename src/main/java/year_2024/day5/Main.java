@@ -1,4 +1,4 @@
-package year2024.day5;
+package year_2024.day5;
 
 import common.InputParser;
 
