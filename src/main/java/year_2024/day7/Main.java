@@ -9,67 +9,45 @@ public class Main {
 
     private static final String RESOURCE_PATH = "src/main/resources/2024/7.txt";
 
-    private static List<InputDataDay6> input = InputParser.parseToList(RESOURCE_PATH, str -> {
+    private static final List<Expression> input = InputParser.parseToList(RESOURCE_PATH, str -> {
         String[] splitted = str.trim().split("\\D+");
-
         long result = Long.parseLong(splitted[0]);
-
         List<Long> numbers = new ArrayList<>();
 
         for (int i = 1; i < splitted.length; i++) {
             numbers.add(Long.parseLong(splitted[i]));
         }
 
-        return new InputDataDay6(result, numbers);
+        return new Expression(result, numbers);
     });
 
     public static void main(String[] args) {
-        System.out.println(solve());
-        System.out.println(solve2());
+        System.out.println(solve(false));
+        System.out.println(solve(true));
     }
 
-    private static long solve() {
+    private static long solve(boolean canConcat) {
         long result = 0;
 
-        for (InputDataDay6 data : input) {
-            if (isValid(data, data.getData().getFirst(), 1)) {
-                result += data.getResult();
+        for (Expression data : input) {
+            if (isValid(data, data.data().getFirst(), 1, canConcat)) {
+                result += data.result();
             }
         }
         return result;
     }
 
-    private static boolean isValid(InputDataDay6 input, long current, int index) {
-        if (index == input.getData().size()) {
-            return input.result == current;
+    private static boolean isValid(Expression input, long current, int index, boolean canConcat) {
+        if (index == input.data().size()) {
+            return input.result() == current;
         }
 
-        return isValid(input, current + input.getData().get(index), index + 1) ||
-                isValid(input, current * input.getData().get(index), index + 1);
+        return isValid(input, current + input.data().get(index), index + 1, canConcat) ||
+                isValid(input, current * input.data().get(index), index + 1, canConcat) ||
+                (canConcat && isValid(input, concatenate(current, input.data().get(index)), index + 1, true));
     }
 
-    private static long solve2() {
-        long result = 0;
-
-        for (InputDataDay6 data : input) {
-            if (isValid2(data, data.getData().getFirst(), 1)) {
-                result += data.getResult();
-            }
-        }
-        return result;
-    }
-
-    private static boolean isValid2(InputDataDay6 input, long current, int index) {
-        if (index == input.getData().size()) {
-            return input.result == current;
-        }
-
-        return isValid2(input, current + input.getData().get(index), index + 1) ||
-                isValid2(input, current * input.getData().get(index), index + 1) ||
-                isValid2(input, concatenate(current, input.getData().get(index)), index + 1);
-    }
-
-    public static long concatenate(Long a, Long b) {
+    private static long concatenate(Long a, Long b) {
         long current = b;
         while (current > 0) {
             a *= 10;

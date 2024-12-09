@@ -8,18 +8,18 @@ import static year_2024.day6.Direction.*;
 
 @Getter
 @Setter
-public class Guard {
-    public static final int ALL_DIRECTIONS = 1 + 2 + 4 + 8;
+class Guard {
+    private static final int ALL_DIRECTIONS = 1 + 2 + 4 + 8;
 
-    public static final int OBSTACLE = -1;
+    private static final int OBSTACLE = -1;
 
-    final int[][] map;
-    int x;
-    int y;
-    Direction direction;
-    long count;
+    private final int[][] map;
+    private int x;
+    private int y;
+    private Direction direction;
+    protected long count;
 
-    public Guard(int[][] map) {
+    protected Guard(int[][] map) {
         this.map = map;
 
         for (int h = 0; h < map.length; h++) {
@@ -36,7 +36,7 @@ public class Guard {
         }
     }
 
-    public void move() {
+    protected void move() {
         markCurrentSpotAsVisited();
         if (map[x + direction.getDx()][y + direction.getDy()] == OBSTACLE) {
             turnRight();
@@ -65,7 +65,7 @@ public class Guard {
         }
     }
 
-    public void turnRight() {
+    private void turnRight() {
         switch (direction) {
             case RIGHT -> direction = DOWN;
             case DOWN -> direction = LEFT;

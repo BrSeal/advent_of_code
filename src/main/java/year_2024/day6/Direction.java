@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public enum Direction {
+enum Direction {
     UP(-1, 0, 1),
     DOWN(1, 0, 2),
     LEFT(0, -1, 4),
@@ -15,7 +15,7 @@ public enum Direction {
     private final int dy;
     private final int marker;
 
-    public static Direction getDirectionByMarker(int marker) {
+    static Direction getDirectionByMarker(int marker) {
        for (Direction direction : Direction.values()) {
            if (direction.marker == marker) {
                return direction;

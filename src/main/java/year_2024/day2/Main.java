@@ -7,9 +7,9 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class Main {
-    public static final String RESOURCE_PATH = "src/main/resources/2024/2.txt";
+    private static final String RESOURCE_PATH = "src/main/resources/2024/2.txt";
 
-    List<int[]> list = InputParser.parseToList(RESOURCE_PATH, str -> Arrays.stream(str.split("\\s+"))
+    private final List<int[]> list = InputParser.parseToList(RESOURCE_PATH, str -> Arrays.stream(str.split("\\s+"))
             .mapToInt(Integer::parseInt)
             .toArray());
 
@@ -45,7 +45,7 @@ public class Main {
         return true;
     }
 
-    BiPredicate<Integer, Integer> definePredicate(int[] arr){
+    private BiPredicate<Integer, Integer> definePredicate(int[] arr){
         int direction = 0;
         for (int i = 0; i < arr.length-1; i++) {
             direction += arr[i] > arr[i+1] ? -1 : 1;
@@ -60,13 +60,8 @@ public class Main {
     private int[] copyWithout(int[] arr, int indexToExclude) {
         int[] copied = new int[arr.length - 1];
 
-        for (int i = 0; i < indexToExclude; i++) {
-            copied[i] = arr[i];
-        }
-
-        for (int i = indexToExclude+1; i < arr.length; i++) {
-            copied[i-1] = arr[i];
-        }
+        System.arraycopy(arr, 0, copied, 0, indexToExclude);
+        System.arraycopy(arr, indexToExclude + 1, copied, indexToExclude, arr.length - indexToExclude - 1);
 
         return copied;
     }

@@ -16,13 +16,12 @@ public class Main {
 
                 for (int i = 0; i < ints.length; i++) {
                     switch (arr[i]){
-                        case '.': ints[i] = 0; break;
                         case '#': ints[i] = -1; break;
                         case '^': ints[i] = UP.getMarker(); break;
                         case '>': ints[i] = RIGHT.getMarker(); break;
                         case 'v': ints[i] = DOWN.getMarker(); break;
                         case '<': ints[i] = LEFT.getMarker(); break;
-                        default: break;
+                        default: ints[i] = 0; break;
                     }
                 }
                 return ints;

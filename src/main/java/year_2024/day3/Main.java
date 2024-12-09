@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    public static final String RESOURCE_PATH = "src/main/resources/2024/3.txt";
+    private static final String RESOURCE_PATH = "src/main/resources/2024/3.txt";
 
     private final Pattern pattern1 = Pattern.compile("mul\\((\\d{1,3},\\d{1,3})\\)");
     private final Pattern pattern2 = Pattern.compile("do\\(\\)|don't\\(\\)|mul\\((\\d{1,3},\\d{1,3})\\)");

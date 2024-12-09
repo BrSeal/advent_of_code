@@ -7,8 +7,8 @@ import java.util.*;
 public class Main {
     private static final String RESOURCE_PATH = "src/main/resources/2024/5.txt";
 
-    Map<Integer, Set<Integer>> rules = new HashMap<>();
-    List<List<Integer>> changeLists = new ArrayList<>();
+    private final Map<Integer, Set<Integer>> rules = new HashMap<>();
+    private final List<List<Integer>> changeLists = new ArrayList<>();
 
     private Main() {
         InputParser.parseToList(RESOURCE_PATH).forEach(str -> {

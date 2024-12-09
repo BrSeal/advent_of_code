@@ -10,10 +10,10 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class Main {
-    public static final String RESOURCE_PATH = "src/main/resources/2024/1.txt";
+    private static final String RESOURCE_PATH = "src/main/resources/2024/1.txt";
 
-    List<Long> left = new ArrayList<>();
-    List<Long> right = new ArrayList<>();
+    private final List<Long> left = new ArrayList<>();
+    private final List<Long> right = new ArrayList<>();
 
     Main() {
         InputParser.parseToList(RESOURCE_PATH)

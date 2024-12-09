@@ -16,7 +16,7 @@ public class Main {
             {'S','.','S'}
     };
 
-    char[][] input = InputParser.parseToList(RESOURCE_PATH).stream()
+    private final char[][] input = InputParser.parseToList(RESOURCE_PATH).stream()
             .map(String::toCharArray)
             .toArray(char[][]::new);
 
