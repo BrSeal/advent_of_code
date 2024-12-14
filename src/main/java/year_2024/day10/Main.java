@@ -10,7 +10,7 @@ import java.util.Set;
 public class Main {
     private static final String RESOURCE_PATH = "src/main/resources/2024/10.txt";
 
-    private static Map<Point, Set<Point>> map = new HashMap<>();
+    private static Map<StartOfTrail, Set<StartOfTrail>> map = new HashMap<>();
 
     private static final int[][] input = InputParser.parseToList(RESOURCE_PATH, str -> str.chars()
                     .map(el -> el - '0')
@@ -29,7 +29,7 @@ public class Main {
         for (int i = 0; i < input.length; i++) {
             for (int j = 0; j < input.length; j++) {
                 if (input[i][j] == 0) {
-                    Point root = new Point(i, j, 0);
+                    StartOfTrail root = new StartOfTrail(i, j, 0);
                     totalScore += countTrails(i, j, root);
                 }
             }
@@ -40,12 +40,12 @@ public class Main {
         return new int[]{totalScore, totalRating};
     }
 
-    private static int countTrails(int i, int j, Point root) {
+    private static int countTrails(int i, int j, StartOfTrail root) {
         if (input[i][j] == 9) {
-            Set<Point> trailEnds = map.getOrDefault(root, new HashSet<>());
+            Set<StartOfTrail> trailEnds = map.getOrDefault(root, new HashSet<>());
             map.putIfAbsent(root, trailEnds);
             root.rating++;
-            return trailEnds.add(new Point(i, j, 0)) ? 1 : 0;
+            return trailEnds.add(new StartOfTrail(i, j, 0)) ? 1 : 0;
         }
         int current = input[i][j];
 

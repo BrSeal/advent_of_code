@@ -2,7 +2,7 @@ package year_2024.day13;
 
 import java.math.BigInteger;
 
-public class EquasionSystem {
+class EquasionSystem {
 
     private static final BigInteger[] NO_SOLUTION = {BigInteger.ZERO, BigInteger.ZERO};
 

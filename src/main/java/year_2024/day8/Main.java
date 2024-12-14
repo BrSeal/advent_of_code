@@ -1,6 +1,7 @@
 package year_2024.day8;
 
 import common.InputParser;
+import common.Point;
 
 import java.util.*;
 
@@ -12,7 +13,7 @@ public class Main {
 
     Map<Character, ArrayList<int[]>> antennas = new HashMap<>();
 
-    Set<Antinode> antinodes = new HashSet<>();
+    Set<Point> antinodes = new HashSet<>();
 
     private Main(){
         for (int i = 0; i < input.length; i++) {
@@ -56,7 +57,7 @@ public class Main {
                firstAntenna[1] + harmonics*deltaY >= 0 &&
                firstAntenna[1] + harmonics*deltaY < input.length
         ){
-            antinodes.add(new Antinode(firstAntenna[0] + harmonics*deltaX, firstAntenna[1] + harmonics*deltaY));
+            antinodes.add(new Point(firstAntenna[0] + harmonics*deltaX, firstAntenna[1] + harmonics*deltaY));
             harmonics++;
             if(firstHarmonicOnly) {
                 return;
