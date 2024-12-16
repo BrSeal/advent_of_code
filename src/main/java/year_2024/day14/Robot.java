@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Robot {
+class Robot {
     Point position;
     int dX;
     int dY;
