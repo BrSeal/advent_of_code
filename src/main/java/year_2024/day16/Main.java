@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 
 public class Main {
 
+    private static final String RESOURCE_PATH = "src/main/resources/2024/16.txt";
+
     static final int WALL = -2;
 
     private static final int ROTATE_COST = 1000;
     private static final int STEP_COST = 1;
-
-    private static final String RESOURCE_PATH = "src/main/resources/2024/16.txt";
 
     private static final int[][] map = InputParser.parseToList(RESOURCE_PATH, str -> str.chars()
                     .map(ch -> ((char) ch) == '#' ? WALL : Integer.MAX_VALUE).toArray())
